@@ -1,0 +1,31 @@
+{
+    "name": "node-abstract-ipc",
+    "version": "0.0.1",
+    "description": "Node.js IPC using abstract sockets.",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha --growl --timeout 5000 test/*.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/randunel/node-abstract-ipc.git"
+    },
+    "keywords": [
+        "ipc",
+        "abstract"
+    ],
+    "author": "Mihai Ene <dkrandu@yahoo.com>",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/randunel/node-abstract-ipc/issues"
+    },
+    "homepage": "https://github.com/randunel/node-abstract-ipc#readme",
+    "dependencies": {
+        "abstract-socket": "1.1.x"
+    },
+    "devDependencies": {
+        "should": "8.2.x",
+        "mocha": "2.4.x"
+    }
+}
+
