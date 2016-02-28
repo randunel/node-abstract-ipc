@@ -1,5 +1,5 @@
 {
-    "name": "node-abstract-ipc",
+    "name": "abstract-ipc",
     "version": "0.1.0",
     "description": "Node.js IPC using abstract sockets.",
     "main": "index.js",
