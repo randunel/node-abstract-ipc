@@ -8,7 +8,7 @@ const SOCKET_NAME = 'test312';
 
 describe('ipc server', () => {
     let server;
-    afterEach(() => server.stop());
+    afterEach(() => server.close());
 
     it('should emit event on message', () => {
         const listener = sinon.spy();
@@ -16,7 +16,17 @@ describe('ipc server', () => {
             .then(_server => {
                 server = _server;
                 return aipc.send(SOCKET_NAME, 'hello')
-                    .then(() => listener.should.be.calledOnce() && listener.calledWith.should.be('hello'));
+                    .then(() => listener.should.be.calledOnce());
+            });
+    });
+
+    it('should emit event with message contents', () => {
+        const listener = sinon.spy();
+        aipc.server(SOCKET_NAME, () => Promise.resolve().then(listener))
+            .then(_server => {
+                server = _server;
+                return aipc.send(SOCKET_NAME, 'hello')
+                    .then(() => listener.should.be.calledWith('hello'));
             });
     });
 });
