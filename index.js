@@ -46,13 +46,16 @@ function serverFactory(name, messageHandler) {
 
             function sendError(err) {
                 send({
-                    error: err
+                    error: {
+                        message: err.message,
+                        stack: err.stack,
+                        code: err.code
+                    }
                 });
             }
 
             function send(res) {
-                client.write(res);
-                setImmediate(() => client.end());
+                client.end(JSON.stringify(res));
             }
         }
     }
@@ -106,7 +109,7 @@ function send(name, data) {
 
             client.removeListener('data', handleData);
             if (parsed.error) {
-                reject(parsed.error);
+                reject(new Error(parsed.error));
             } else {
                 resolve(parsed.payload);
             }

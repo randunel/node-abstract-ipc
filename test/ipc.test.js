@@ -29,5 +29,16 @@ describe('ipc server', () => {
                     .then(() => listener.should.be.calledWith('hello'));
             });
     });
+
+    it('should return error when rejecting', () => {
+        const listener = sinon.spy();
+        aipc.server(SOCKET_NAME, () => Promise.reject(new Error('test')))
+            .then(_server => {
+                server = _server;
+                return aipc.send(SOCKET_NAME, 'hello')
+                    .then(() => listener.should.not.be.called())
+                    .catch(err => err.message.should.equal('test'));
+            });
+    });
 });
 
