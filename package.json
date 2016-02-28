@@ -21,11 +21,13 @@
     },
     "homepage": "https://github.com/randunel/node-abstract-ipc#readme",
     "dependencies": {
-        "abstract-socket": "1.1.x"
+        "abstract-socket": "randunel/node-abstractsocket"
     },
     "devDependencies": {
+        "mocha": "2.4.x",
         "should": "8.2.x",
-        "mocha": "2.4.x"
+        "should-sinon": "0.0.x",
+        "sinon" : "1.17.x"
     }
 }
 
